@@ -11,10 +11,11 @@ pipeline {
 
     stage('Deploy App') {
       steps {
-        script {
-                      sh 'export KUBECONFIG=/var/kube-config/config; sudo /usr/local/bin/kubectl get ns; sudo /usr/local/bin/kubectl get nodes; sudo /usr/local/bin/kubectl apply -f release/kubernetes-manifests.yaml -n cart'
-                    
-        }
+       script {
+                withEnv(["KUBECONFIG=/var/kube-config/config"]){      
+                sh 'sudo /usr/local/bin/kubectl apply -f release/kubernetes-manifests.yaml -n cart'                    
+              }
+  }
       }
     }
 
