@@ -11,11 +11,9 @@ pipeline {
 
     stage('Deploy App') {
       steps {
-       script {
-                withEnv(["KUBECONFIG=/var/kube-config/config"]){      
-                sh 'sudo /usr/local/bin/kubectl get nodes -o wide; sudo /usr/local/bin/kubectl apply -f release/kubernetes-manifests.yaml -n cart'
-              }
-  }
+      script {        
+      sh 'sudo /usr/local/bin/kubectl apply -f release/kubernetes-manifests.yaml -n cart --kubeconfig=/var/kube-config/config'                    
+}
       }
     }
 
