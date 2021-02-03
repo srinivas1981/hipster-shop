@@ -12,7 +12,7 @@ pipeline {
     stage('Deploy App') {
       steps {
         script {
-                    sh 'export KUBECONFIG=/root/kube-config/config; sudo /usr/local/bin/kubectl apply -f release/kubernetes-manifests.yaml -n cartshopping12'
+                    sh 'export KUBECONFIG=/var/kube-config/config; sudo /usr/local/bin/kubectl apply -f release/kubernetes-manifests.yaml -n cartshopping12'
         }
       }
     }
