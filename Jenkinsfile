@@ -13,7 +13,7 @@ pipeline {
       steps {
        script {
                 withEnv(["KUBECONFIG=/var/kube-config/config"]){      
-                sh 'sudo /usr/local/bin/kubectl apply -f release/kubernetes-manifests.yaml -n cart'                    
+                sh 'sudo /usr/local/bin/kubectl apply -f release/kubernetes-manifests.yaml -n cart'
               }
   }
       }
