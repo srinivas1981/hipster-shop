@@ -11,8 +11,9 @@ pipeline {
 
     stage('Deploy App') {
       steps {
-      script {        
-      sh 'sudo /usr/local/bin/kubectl apply -f release/kubernetes-manifests.yaml -n cart --kubeconfig=/var/kube-config/config'                    
+      script {
+      sh 'sudo /usr/local/bin/kubectl create ns cart --kubeconfig=/var/aws-config-workload/admin.conf'
+      sh 'sudo /usr/local/bin/kubectl apply -f release/kubernetes-manifests.yaml -n cart --kubeconfig=/var/aws-config-workload/admin.conf'                    
 }
       }
     }
